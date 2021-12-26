@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
-import * as $ from 'jquery';
 // @ts-ignore
 import database from '../database.json';
 
@@ -25,8 +24,8 @@ export class MainViewComponent implements OnInit, OnDestroy {
     document.querySelectorAll('*[id]').forEach(e => {
       // console.log(e.id);
       if (e.id !== 'frame' && e.id !== 'object') {
-        const el = $('#' + e.id);
-        el.on('click', () => this.onClick(e.id));
+        const el = document.getElementById(e.id);
+        el.onclick = () => this.onClick(e.id);
       }
     });
 

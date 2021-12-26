@@ -6,12 +6,16 @@ import {AppComponent} from './app.component';
 import {MainViewComponent} from './main-view/main-view.component';
 import {FloorZeroComponent} from './floor-zero/floor-zero.component';
 import {DataService} from './data.service';
+import {SearchBarComponent} from './search-bar/search-bar.component';
+import {DetailsFieldComponent} from './details-field/details-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainViewComponent,
-    FloorZeroComponent
+    FloorZeroComponent,
+    SearchBarComponent,
+    DetailsFieldComponent
   ],
   imports: [
     BrowserModule,
