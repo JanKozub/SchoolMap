@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   private mouseDownStatus = false;
   private counter = 0;
-  private clickSwitch = false;
+  clickSwitch = false;
 
   private currentX = 0;
   private currentY = 0;
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
   private offsetY = 0;
 
   private scale = 1.0;
+
+  get GetClickSwitch(): boolean {
+    return this.clickSwitch;
+  }
 
   ngOnInit(): void {
     const frame = $('#frame');
@@ -64,14 +68,11 @@ export class AppComponent implements OnInit {
           this.offsetY = parseInt(object.css('top'), 10);
         }
 
-        if (this.counter > 20) {
+        if (this.startX !== this.currentX && this.startY !== this.currentY) {
           onMove(this.startX, this.startY, this.currentX, this.currentY, this.offsetX, this.offsetY);
           this.clickSwitch = false;
         }
       } else {
-        if (this.clickSwitch) {
-          onClick();
-        }
         this.clickSwitch = false;
         this.counter = 0;
       }
@@ -90,11 +91,6 @@ export class AppComponent implements OnInit {
         object.css('top', newTop);
       }
 
-    }
-
-    function onClick(): void {
-      console.log('that was a nice click man');
-      console.log(document.getElementById('176inactiveG'));
     }
   }
 }

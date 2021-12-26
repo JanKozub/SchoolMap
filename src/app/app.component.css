@@ -1,0 +1,23 @@
+#frame {
+  width: 800px;
+  height: 800px;
+  position: relative;
+  left: 200px;
+  border: 5px black dotted;
+  overflow: hidden;
+}
+
+#object {
+  width: 500px;
+  height: 500px;
+  background-color: deepskyblue;
+  border: 3px solid red;
+  position: relative;
+  left: 100px;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
