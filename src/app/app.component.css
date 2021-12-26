@@ -1,8 +1,8 @@
 #frame {
-  width: 800px;
-  height: 800px;
+  width: 95vw;
+  height: 95vh;
   position: relative;
-  left: 200px;
+  left: 2vw;
   border: 5px black dotted;
   overflow: hidden;
 }
