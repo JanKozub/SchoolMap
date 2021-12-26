@@ -1,5 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import * as $ from 'jquery';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {DataService} from './data.service';
 
@@ -9,24 +8,26 @@ import {DataService} from './data.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'Mapa';
 
+  @ViewChild('object', {static: true}) obj: ElementRef;
+  @ViewChild('frame', {static: true}) frameElement: ElementRef;
+
   mouseDownStatus = false;
-  private counter = 0;
   clickSwitch = false;
 
   private currentX = 0;
   private currentY = 0;
-
   private startX = 0;
   private startY = 0;
   private offsetX = 0;
   private offsetY = 0;
+  private maxX = 0;
+  private maxY = 0;
 
   private scale = 1.0;
-
-  private object: any;
+  private counter = 0;
 
   message: string;
   subscription: Subscription;
@@ -36,8 +37,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.data.currentMessage.subscribe(message => this.message = message);
+  }
 
-    this.object = $('#object');
+  ngAfterViewInit(): void {
+    this.maxX = parseInt(getComputedStyle(this.frameElement.nativeElement).width, 10);
+    this.maxY = parseInt(getComputedStyle(this.frameElement.nativeElement).height, 10);
   }
 
   ngOnDestroy(): void {
@@ -48,31 +52,33 @@ export class AppComponent implements OnInit, OnDestroy {
     this.currentX = ev.clientX;
     this.currentY = ev.clientY;
 
-    if (this.mouseDownStatus === true) {
+    if (this.mouseDownStatus === true) { // If mouse left is down
+
       this.counter++;
       this.clickSwitch = true;
 
-      if (this.counter === 1) {
+      if (this.counter === 1) { // Get Mouse position at the start
         this.startX = this.currentX;
         this.startY = this.currentY;
-        this.offsetX = parseInt(this.object.css('left'), 10);
-        this.offsetY = parseInt(this.object.css('top'), 10);
+        this.offsetX = parseInt(getComputedStyle(this.obj.nativeElement).left, 10);
+        this.offsetY = parseInt(getComputedStyle(this.obj.nativeElement).top, 10);
       }
 
-      if (this.startX !== this.currentX && this.startY !== this.currentY) {
+      if (this.startX !== this.currentX && this.startY !== this.currentY) { // If mouse is moving then calculate new img position
         const newLeft = this.offsetX + this.currentX - this.startX;
         const newTop = this.offsetY + this.currentY - this.startY;
 
-        if (newLeft > 0 && newLeft <= 300) {
-          this.object.css('left', newLeft);
+        const objSize = this.getObjSize();
+        if (newLeft > 0 && newLeft <= (this.maxX - objSize[0])) {
+          this.obj.nativeElement.style.left = newLeft + 'px';
         }
-        if (newTop > 0 && newTop <= 300) {
-          this.object.css('top', newTop);
+        if (newTop > 0 && newTop <= (this.maxY - objSize[1])) {
+          this.obj.nativeElement.style.top = newTop + 'px';
         }
         this.clickSwitch = false;
       }
 
-      this.sendClickStatus();
+      this.sendClickStatus(); // Inform listeners about mouse left status
     } else {
       this.clickSwitch = false;
       this.counter = 0;
@@ -87,11 +93,18 @@ export class AppComponent implements OnInit, OnDestroy {
         this.scale = Math.round((this.scale - 0.1) * 100) / 100;
       }
     }
-    this.object.css('transform', 'scale(' + this.scale + ')');
+    this.obj.nativeElement.style.transform = 'scale(' + this.scale + ')';
   }
 
   sendClickStatus(): void {
     this.data.changeMessage(this.clickSwitch);
+  }
+
+  getObjSize(): number[] {
+    return [
+      parseInt(getComputedStyle(this.obj.nativeElement).width, 10),
+      parseInt(getComputedStyle(this.obj.nativeElement).height, 10)
+    ];
   }
 }
 

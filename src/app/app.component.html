@@ -1,8 +1,8 @@
-<div (wheel)="onMouseWheel($event)" id="frame">
+<div #frame (wheel)="onMouseWheel($event)" class="frame">
   <div (mousedown)="mouseDownStatus = true"
        (mousemove)="onMouseMove($event)"
        (mouseup)="mouseDownStatus = false"
-       id="object">
+       #object class="object">
     <router-outlet></router-outlet>
   </div>
 </div>
