@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataService} from '../data.service';
 import {Subscription} from 'rxjs';
+import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-main-view',
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.css']
+  selector: 'app-floor-zero',
+  templateUrl: './floor-zero.component.html',
+  styleUrls: ['./floor-zero.component.css']
 })
-export class MainViewComponent implements OnInit, OnDestroy {
+export class FloorZeroComponent implements OnInit, OnDestroy {
 
   clickStatus: boolean;
   subscription: Subscription;

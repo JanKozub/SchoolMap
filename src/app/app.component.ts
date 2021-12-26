@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import * as $ from 'jquery';
+import {Subscription} from 'rxjs';
+import {DataService} from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'Mapa';
 
   private mouseDownStatus = false;
@@ -24,11 +26,15 @@ export class AppComponent implements OnInit {
 
   private scale = 1.0;
 
-  get GetClickSwitch(): boolean {
-    return this.clickSwitch;
+  message: string;
+  subscription: Subscription;
+
+  constructor(private data: DataService) {
   }
 
   ngOnInit(): void {
+    this.subscription = this.data.currentMessage.subscribe(message => this.message = message);
+
     const frame = $('#frame');
     const object = $('#object');
 
@@ -72,6 +78,8 @@ export class AppComponent implements OnInit {
           onMove(this.startX, this.startY, this.currentX, this.currentY, this.offsetX, this.offsetY);
           this.clickSwitch = false;
         }
+
+        this.sendClickStatus();
       } else {
         this.clickSwitch = false;
         this.counter = 0;
@@ -92,6 +100,14 @@ export class AppComponent implements OnInit {
       }
 
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  sendClickStatus(): void {
+    this.data.changeMessage(this.clickSwitch);
   }
 }
 
