@@ -53,9 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentY = ev.clientY;
 
     if (this.mouseDownStatus === true) { // If mouse left is down
-
       this.counter++;
-      this.clickSwitch = true;
 
       if (this.counter === 1) { // Get Mouse position at the start
         this.startX = this.currentX;
@@ -83,6 +81,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.clickSwitch = false;
       this.counter = 0;
     }
+  }
+
+  onMouseUp(ev: any): void {
+    this.onMouseMove(ev);
+    this.mouseDownStatus = false;
   }
 
   onMouseWheel(e: any): void {

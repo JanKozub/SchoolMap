@@ -22,7 +22,6 @@ export class MainViewComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     document.querySelectorAll('*[id]').forEach(e => {
-      // console.log(e.id);
       if (e.id !== 'frame' && e.id !== 'object') {
         const el = document.getElementById(e.id);
         el.onclick = () => this.onClick(e.id);
@@ -39,14 +38,15 @@ export class MainViewComponent implements OnInit, OnDestroy {
   }
 
   onClick(id: string): void {
-    this.classesList.forEach(value => {
-      value.ids.forEach(e => {
-        if (e === id) {
-          console.log(value.title);
-          this.router.navigate([value.route]).then(() => console.log('navigated to ' + value.route));
-        }
+    if (this.clickStatus) {
+      this.classesList.forEach(value => {
+        value.ids.forEach(e => {
+          if (e === id) {
+            this.router.navigate([value.route]).then(() => console.log('navigated to ' + value.route));
+          }
+        });
       });
-    });
+    }
   }
 
 }
