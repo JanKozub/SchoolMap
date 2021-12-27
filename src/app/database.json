@@ -1,6 +1,13 @@
 [
   {
-    "title": "szkola",
+    "title": "glowna mapa",
+    "ids": [
+      "212event"
+    ],
+    "route": "/"
+  },
+  {
+    "title": "parter",
     "ids": [
       "test123",
       "174Gt"
@@ -11,7 +18,8 @@
     "title": "sala gimnastyczna",
     "ids": [
       "176inactiveG",
-      "176inactiveGt"
+      "176inactiveGt",
+      "212event"
     ],
     "route": "/"
   }

@@ -1,26 +1,26 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataService} from '../data.service';
+import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
-// @ts-ignore
 import database from '../database.json';
+import {DataService} from '../data.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-main-view',
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.css']
+  selector: 'app-view-frame',
+  templateUrl: './view-frame.component.html',
+  styleUrls: ['./view-frame.component.css']
 })
-export class MainViewComponent implements OnInit, OnDestroy {
+
+export abstract class ViewFrameComponent<T = any> implements AfterViewInit, OnDestroy {
 
   clickStatus: boolean;
   subscription: Subscription;
 
   public classesList: { title: string, ids: string[], route: string }[] = database;
 
-  constructor(private data: DataService, private router: Router) {
+  protected constructor(private data: DataService, private router: Router) {
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     document.querySelectorAll('*[id]').forEach(e => {
       if (e.id !== 'frame' && e.id !== 'object') {
         const el = document.getElementById(e.id);
@@ -42,11 +42,12 @@ export class MainViewComponent implements OnInit, OnDestroy {
       this.classesList.forEach(value => {
         value.ids.forEach(e => {
           if (e === id) {
-            this.router.navigate([value.route]).then(() => console.log('navigated to ' + value.route));
+            this.router.navigate([value.route]).then(
+              () => console.log('navigated to ' + value.title + ' with route ' + value.route)
+            );
           }
         });
       });
     }
   }
-
 }

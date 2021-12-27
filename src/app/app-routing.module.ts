@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {Input, NgModule} from '@angular/core';
-import {MainViewComponent} from './main-view/main-view.component';
-import {FloorZeroComponent} from './floor-zero/floor-zero.component';
+import {MainViewComponent} from './views/main-view/main-view.component';
+import {FloorZeroComponent} from './views/floor-zero/floor-zero.component';
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
