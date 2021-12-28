@@ -1,17 +1,19 @@
 .frame {
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: 100vh;
   position: absolute;
   overflow: hidden;
   z-index: 0;
+  background-color: darkgray;
 }
 
 .object {
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
   border: 3px solid red;
   position: relative;
-  left: 100px;
+  left: calc((100vw - 800px) / 2);
+  top: calc((100vh - 800px) / 2);
 
   user-select: none;
   -moz-user-select: none;

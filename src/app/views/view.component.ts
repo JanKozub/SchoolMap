@@ -6,11 +6,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-frame',
-  templateUrl: './view-frame.component.html',
-  styleUrls: ['./view-frame.component.css']
+  template: ''
 })
 
-export abstract class ViewFrameComponent<T = any> implements AfterViewInit, OnDestroy {
+export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy {
 
   clickStatus: boolean;
   subscription: Subscription;
