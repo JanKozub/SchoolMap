@@ -8,6 +8,10 @@ import {FloorZeroComponent} from './views/floor-zero/floor-zero.component';
 import {DataService} from './data.service';
 import {SearchBarComponent} from './search-bar/search-bar.component';
 import {DetailsFieldComponent} from './details-field/details-field.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import {DetailsFieldComponent} from './details-field/details-field.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

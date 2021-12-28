@@ -1,1 +1,22 @@
-<div id="main-container"></div>
+<div id="wrapper">
+  <i class="material-icons" id="search-icon">search</i>
+  <div id="container">
+    <input
+      #textField
+      (change)="onChange()"
+      [formControl]="controller"
+      [matAutocomplete]="auto"
+      aria-label="Class"
+      id="search-field"
+      matInput
+      placeholder="Wpisz szukane miejsce"
+      type="text"
+    >
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onChange()" autoActiveFirstOption>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </div>
+</div>

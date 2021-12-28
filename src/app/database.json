@@ -1,13 +1,13 @@
 [
   {
-    "title": "glowna mapa",
+    "title": "Główna Mapa",
     "ids": [
       "212event"
     ],
     "route": "/"
   },
   {
-    "title": "parter",
+    "title": "Parter",
     "ids": [
       "test123",
       "174Gt"
@@ -15,7 +15,7 @@
     "route": "/floor-zero"
   },
   {
-    "title": "sala gimnastyczna",
+    "title": "Sala Gimnastyczna",
     "ids": [
       "176inactiveG",
       "176inactiveGt",
