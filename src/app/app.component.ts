@@ -157,4 +157,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   setObjTop(newTop: number): void {
     this.obj.nativeElement.style.top = newTop + 'px';
   }
+
+  onRightClick(ev: any): void {
+    const wrapper = document.getElementById('details-wrapper');
+    wrapper.classList.remove('slide-out');
+    wrapper.classList.add('slide-in');
+    wrapper.style.left = '8px';
+
+    ev.preventDefault();
+  }
 }

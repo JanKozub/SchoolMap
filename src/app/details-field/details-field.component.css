@@ -1,10 +1,38 @@
+.slide-in {
+  animation-name: slide-in;
+  animation-duration: 1s;
+}
+
+@keyframes slide-in {
+  from {
+    left: -366px;
+  }
+  to {
+    left: 8px;
+  }
+}
+
+.slide-out {
+  animation-name: slide-out;
+  animation-duration: 1s;
+}
+
+@keyframes slide-out {
+  from {
+    left: 8px;
+  }
+  to {
+    left: -366px;
+  }
+}
+
 #details-wrapper {
   width: 358px;
   height: 600px;
   background-color: #eeeeee;
   position: absolute;
   top: 64px;
-  left: 8px;
+  left: -366px;
   border-radius: 8px;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   z-index: 100;
@@ -19,6 +47,7 @@
   border-bottom-left-radius: 8px;
   background-color: #eeeeee;
   z-index: 100;
+  user-select: none;
 }
 
 #close-icon {

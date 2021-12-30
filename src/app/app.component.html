@@ -3,6 +3,7 @@
   <div (mousedown)="mouseDownStatus = true; this.clickSwitch = true;"
        (mousemove)="onMouseMove($event)"
        (mouseup)="onMouseUp($event)"
+       (contextmenu)="onRightClick($event)"
        #object class="object">
     <router-outlet></router-outlet>
   </div>
