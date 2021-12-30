@@ -5,8 +5,7 @@ import {ViewComponent} from '../view.component';
 
 @Component({
   selector: 'app-floor-zero',
-  templateUrl: './floor-zero.component.html',
-  styleUrls: ['./floor-zero.component.css']
+  templateUrl: './floor-zero.component.html'
 })
 export class FloorZeroComponent extends ViewComponent {
 

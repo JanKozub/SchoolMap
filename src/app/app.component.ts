@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {DataService} from './data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   message: string;
   subscription: Subscription;
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private router: Router) {
+    router.events.subscribe(() => {
+      this.startSize = this.getObjSize();
+    });
   }
 
   ngOnInit(): void {
@@ -43,7 +47,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.maxX = parseInt(getComputedStyle(this.frameElement.nativeElement).width, 10);
     this.maxY = parseInt(getComputedStyle(this.frameElement.nativeElement).height, 10);
-    this.startSize = this.getObjSize();
   }
 
   ngOnDestroy(): void {
@@ -109,7 +112,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
     this.oldScale = this.scale;
     this.scale += (delta / 5);
-
 
     if (this.scale < 1) {
       this.scale = 1;

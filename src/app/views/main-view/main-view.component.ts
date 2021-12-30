@@ -5,8 +5,7 @@ import {ViewComponent} from '../view.component';
 
 @Component({
   selector: 'app-main-view',
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.css']
+  templateUrl: './main-view.component.html'
 })
 export class MainViewComponent extends ViewComponent {
 
