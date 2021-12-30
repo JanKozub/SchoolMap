@@ -17,8 +17,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   mouseDownStatus = false;
   clickSwitch = false;
 
-  private currentX = 0;
-  private currentY = 0;
   private startX = 0;
   private startY = 0;
   private offsetX = 0;
@@ -53,35 +51,35 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onMouseMove(ev: any): void {
-    this.currentX = ev.clientX;
-    this.currentY = ev.clientY;
+    const currentX = ev.clientX;
+    const currentY = ev.clientY;
 
     if (this.mouseDownStatus === true) { // If mouse left is down
       this.counter++;
 
       if (this.counter === 1) { // Get Mouse position at the start
-        this.startX = this.currentX;
-        this.startY = this.currentY;
+        this.startX = currentX;
+        this.startY = currentY;
         this.offsetX = this.getObjLeft();
         this.offsetY = this.getObjTop();
       }
 
-      if (this.startX !== this.currentX && this.startY !== this.currentY) { // If mouse is moving then calculate new img position
-        const newLeft = this.offsetX + this.currentX - this.startX;
-        const newTop = this.offsetY + this.currentY - this.startY;
+      if (this.startX !== currentX && this.startY !== currentY) { // If mouse is moving then calculate new img position
+        const newLeft = this.offsetX + currentX - this.startX;
+        const newTop = this.offsetY + currentY - this.startY;
 
         // if object is in frame then =>
         if (newTop > this.getObjSize().h / -2 && newTop + this.getObjSize().h < this.maxY + this.getObjSize().h / 2) {
           this.setObjTop(newTop);
         } else {
-          this.startY = this.currentY;
+          this.startY = currentY;
           this.offsetY = this.getObjTop();
         }
 
         if (newLeft > this.getObjSize().w / -2 && newLeft + this.getObjSize().w < this.maxX + this.getObjSize().w / 2) {
           this.setObjLeft(newLeft);
         } else {
-          this.startX = this.currentX;
+          this.startX = currentX;
           this.offsetX = this.getObjLeft();
         }
         // <=

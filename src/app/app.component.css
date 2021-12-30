@@ -4,7 +4,7 @@
   position: absolute;
   overflow: hidden;
   z-index: 0;
-  background-color: darkgray;
+  background-color: #FFFFFF;
 }
 
 .object {
@@ -20,13 +20,4 @@
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-}
-
-#pink {
-  width: 5px;
-  height: 5px;
-  background-color: deeppink;
-  position: absolute;
-  left: 50vw;
-  top: 50vh;
 }

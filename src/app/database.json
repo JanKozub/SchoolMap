@@ -4,6 +4,7 @@
     "ids": [
       "212event"
     ],
+    "description": "Szkola srednia zsl jest jak nazwa wskazuje srednia",
     "route": "/"
   },
   {
@@ -12,6 +13,7 @@
       "test123",
       "174Gt"
     ],
+    "description": "parter ma fajne kanapy",
     "route": "/floor-zero"
   },
   {
@@ -21,6 +23,7 @@
       "176inactiveGt",
       "212event"
     ],
+    "description": "Ktos tu cwiczy?",
     "route": "/"
   }
 ]
