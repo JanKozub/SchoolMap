@@ -26,7 +26,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private maxX = 0;
   private maxY = 0;
 
+  private startSize = {w: 0, h: 0};
+
   private scale = 1.0;
+  private oldScale = 0;
   private counter = 0;
 
   message: string;
@@ -42,6 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.maxX = parseInt(getComputedStyle(this.frameElement.nativeElement).width, 10);
     this.maxY = parseInt(getComputedStyle(this.frameElement.nativeElement).height, 10);
+    this.startSize = this.getObjSize();
   }
 
   ngOnDestroy(): void {
@@ -58,21 +62,29 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.counter === 1) { // Get Mouse position at the start
         this.startX = this.currentX;
         this.startY = this.currentY;
-        this.offsetX = parseInt(getComputedStyle(this.obj.nativeElement).left, 10);
-        this.offsetY = parseInt(getComputedStyle(this.obj.nativeElement).top, 10);
+        this.offsetX = this.getObjLeft();
+        this.offsetY = this.getObjTop();
       }
 
       if (this.startX !== this.currentX && this.startY !== this.currentY) { // If mouse is moving then calculate new img position
         const newLeft = this.offsetX + this.currentX - this.startX;
         const newTop = this.offsetY + this.currentY - this.startY;
 
-        const objSize = this.getObjSize();
-        if (newLeft > 0 && newLeft <= (this.maxX - objSize[0])) {
-          this.obj.nativeElement.style.left = newLeft + 'px';
+        // if object is in frame then =>
+        if (newTop > this.getObjSize().h / -2 && newTop + this.getObjSize().h < this.maxY + this.getObjSize().h / 2) {
+          this.setObjTop(newTop);
+        } else {
+          this.startY = this.currentY;
+          this.offsetY = this.getObjTop();
         }
-        if (newTop > 0 && newTop <= (this.maxY - objSize[1])) {
-          this.obj.nativeElement.style.top = newTop + 'px';
+
+        if (newLeft > this.getObjSize().w / -2 && newLeft + this.getObjSize().w < this.maxX + this.getObjSize().w / 2) {
+          this.setObjLeft(newLeft);
+        } else {
+          this.startX = this.currentX;
+          this.offsetX = this.getObjLeft();
         }
+        // <=
         this.clickSwitch = false;
       }
 
@@ -89,27 +101,62 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onMouseWheel(e: any): void {
-    if (e.deltaY < 0) {
-      this.scale = Math.round((this.scale + 0.1) * 100) / 100;
+
+    const pgX = e.pageX;
+    const pgY = e.pageY;
+
+    const parentRect = this.frameElement.nativeElement.getBoundingClientRect();
+    const rect = this.obj.nativeElement.getBoundingClientRect();
+
+    const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+    this.oldScale = this.scale;
+    this.scale += (delta / 5);
+
+
+    if (this.scale < 1) {
+      this.scale = 1;
+    } else if (this.scale > 5) {
+      this.scale = 5;
     } else {
-      if (this.scale > 1.0) {
-        this.scale = Math.round((this.scale - 0.1) * 100) / 100;
-      }
+      const xPercent = parseFloat(((pgX - rect.left) / rect.width).toFixed(2));
+      const yPercent = parseFloat(((pgY - rect.top) / rect.height).toFixed(2));
+      const left = Math.round(pgX - parentRect.left - (xPercent * (rect.width * this.scale / this.oldScale)));
+      const top = Math.round(pgY - parentRect.top - (yPercent * (rect.height * this.scale / this.oldScale)));
+
+      this.obj.nativeElement.style.width = this.startSize.w * this.scale + 'px';
+      this.obj.nativeElement.style.height = this.startSize.h * this.scale + 'px';
+
+      this.setObjLeft(left);
+      this.setObjTop(top);
     }
-    this.obj.nativeElement.style.transform = 'scale(' + this.scale + ')';
+
+    e.preventDefault();
   }
 
   sendClickStatus(): void {
     this.data.changeMessage(this.clickSwitch);
   }
 
-  getObjSize(): number[] {
-    return [
-      parseInt(getComputedStyle(this.obj.nativeElement).width, 10),
-      parseInt(getComputedStyle(this.obj.nativeElement).height, 10)
-    ];
+  getObjSize(): any {
+    return {
+      w: parseInt(getComputedStyle(this.obj.nativeElement).width, 10),
+      h: parseInt(getComputedStyle(this.obj.nativeElement).height, 10)
+    };
+  }
+
+  getObjLeft(): number {
+    return parseInt(getComputedStyle(this.obj.nativeElement).left, 10);
+  }
+
+  setObjLeft(newLeft: number): void {
+    this.obj.nativeElement.style.left = newLeft + 'px';
+  }
+
+  getObjTop(): number {
+    return parseInt(getComputedStyle(this.obj.nativeElement).top, 10);
+  }
+
+  setObjTop(newTop: number): void {
+    this.obj.nativeElement.style.top = newTop + 'px';
   }
 }
-
-
-

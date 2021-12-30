@@ -8,16 +8,25 @@
 }
 
 .object {
-  width: 800px;
-  height: 800px;
+  width: 100vh;
+  height: 100vh;
   border: 3px solid red;
   position: relative;
-  left: calc((100vw - 800px) / 2);
-  top: calc((100vh - 800px) / 2);
+  left: calc((100vw - 100vh) / 2);
+  top: 20px;
 
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+}
+
+#pink {
+  width: 5px;
+  height: 5px;
+  background-color: deeppink;
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
 }
