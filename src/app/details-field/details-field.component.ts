@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {DetailsService} from '../details.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-details-field',
@@ -7,10 +9,22 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DetailsFieldComponent implements OnInit {
 
-  constructor() {
+  title = '[title]';
+  description = '[description]';
+  private route = '/default-route';
+
+  constructor(private detailsService: DetailsService, private router: Router) {
+  }
+
+  static openWindow(): void {
+    const wrapper = document.getElementById('details-wrapper');
+    wrapper.classList.remove('slide-out');
+    wrapper.classList.add('slide-in');
+    wrapper.style.left = '8px';
   }
 
   ngOnInit(): void {
+    this.detailsService.currentMessage.subscribe(data => this.changeDetails(data));
   }
 
   closeWindow(): void {
@@ -18,5 +32,18 @@ export class DetailsFieldComponent implements OnInit {
     wrapper.classList.remove('slide-in');
     wrapper.classList.add('slide-out');
     wrapper.style.left = '-366px';
+  }
+
+  changeDetails(data: string): void {
+    const values = data.split(';');
+    this.title = values[0];
+    this.description = values[1];
+    this.route = values[2];
+  }
+
+  onClick(): void {
+    this.router.navigate([this.route]).then(
+      () => console.log('navigated to ' + this.route)
+    );
   }
 }

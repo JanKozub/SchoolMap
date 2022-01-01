@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import {DetailsService} from './details.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {MatInputModule} from '@angular/material/input';
     MatAutocompleteModule,
     MatInputModule
   ],
-  providers: [DataService],
+  providers: [DataService, DetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

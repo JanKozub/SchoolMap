@@ -2,7 +2,8 @@ import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 import database from '../database.json';
 import {DataService} from '../data.service';
-import {Router} from '@angular/router';
+import {DetailsFieldComponent} from '../details-field/details-field.component';
+import {DetailsService} from '../details.service';
 
 @Component({
   selector: 'app-view-frame',
@@ -10,13 +11,12 @@ import {Router} from '@angular/router';
 })
 
 export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy {
-
   clickStatus: boolean;
   subscription: Subscription;
 
-  public classesList: { title: string, ids: string[], route: string }[] = database;
+  public classesList: { title: string, ids: string[], description: string, route: string }[] = database;
 
-  protected constructor(private data: DataService, private router: Router) {
+  protected constructor(private data: DataService, private detailsService: DetailsService) {
   }
 
   ngAfterViewInit(): void {
@@ -38,12 +38,11 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
 
   onClick(id: string): void {
     if (this.clickStatus) {
-      this.classesList.forEach(value => {
-        value.ids.forEach(e => {
+      this.classesList.forEach(entry => {
+        entry.ids.forEach(e => {
           if (e === id) {
-            this.router.navigate([value.route]).then(
-              () => console.log('navigated to ' + value.title + ' with route ' + value.route)
-            );
+            DetailsFieldComponent.openWindow();
+            this.detailsService.changeDetails(entry.title, entry.description, entry.route);
           }
         });
       });

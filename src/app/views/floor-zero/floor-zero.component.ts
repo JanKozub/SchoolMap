@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DataService} from '../../data.service';
-import {Router} from '@angular/router';
 import {ViewComponent} from '../view.component';
+import {DetailsService} from '../../details.service';
 
 @Component({
   selector: 'app-floor-zero',
@@ -9,7 +9,7 @@ import {ViewComponent} from '../view.component';
 })
 export class FloorZeroComponent extends ViewComponent {
 
-  constructor(data: DataService, router: Router) {
-    super(data, router);
+  constructor(data: DataService, detailsService: DetailsService) {
+    super(data, detailsService);
   }
 }
