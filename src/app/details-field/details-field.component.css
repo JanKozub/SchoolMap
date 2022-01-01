@@ -1,6 +1,6 @@
 .slide-in {
   animation-name: slide-in;
-  animation-duration: 1s;
+  animation-duration: 0.75s;
 }
 
 @keyframes slide-in {
@@ -14,7 +14,7 @@
 
 .slide-out {
   animation-name: slide-out;
-  animation-duration: 1s;
+  animation-duration: 0.75s;
 }
 
 @keyframes slide-out {
@@ -74,7 +74,6 @@
   position: relative;
   left: 8px;
   top: -40px;
-  /*background-color: yellow;*/
   user-select: none;
 }
 
@@ -86,11 +85,10 @@
 }
 
 #desc-wrapper {
-  height: 182px;
+  height: 142px;
   position: relative;
   left: 8px;
   top: -40px;
-  /*background-color: yellowgreen;*/
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   user-select: none;
@@ -98,4 +96,34 @@
 
 #desc-field {
   font-size: 20px;
+}
+
+#nav-button {
+  width: 360px;
+  height: 50px;
+  background-color: rgb(0, 85, 127);
+  position: relative;
+  left: -1px;
+  top: -36px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  cursor: pointer;
+}
+
+#nav-text {
+  font-size: 25px;
+  position: relative;
+  top: 13px;
+  left: 109px;
+  user-select: none;
+  cursor: pointer;
+}
+
+#nav-icon {
+  font-size: 40px;
+  position: relative;
+  top: -27px;
+  left: 315px;
+  user-select: none;
+  cursor: pointer;
 }

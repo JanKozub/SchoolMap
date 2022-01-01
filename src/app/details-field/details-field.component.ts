@@ -47,5 +47,6 @@ export class DetailsFieldComponent implements OnInit {
     this.router.navigate([this.route]).then(
       () => console.log('navigated to ' + this.route)
     );
+    this.closeWindow();
   }
 }
