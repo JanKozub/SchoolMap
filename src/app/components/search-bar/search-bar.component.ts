@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import database from '../../database.json';
+import database from '../../../assets/database.json';
 import {Router} from '@angular/router';
 
 @Component({

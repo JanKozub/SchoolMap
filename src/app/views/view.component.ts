@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import database from '../database.json';
+import database from '../../assets/database.json';
 import {DataService} from '../services/data.service';
 import {DetailsFieldComponent} from '../components/details-field/details-field.component';
 import {DetailsService} from '../services/details.service';
