@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {DetailsService} from '../services/details.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {DetailsService} from '../services/details.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   providers: [DataService, DetailsService],
   bootstrap: [AppComponent]

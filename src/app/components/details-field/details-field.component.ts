@@ -41,12 +41,24 @@ export class DetailsFieldComponent implements OnInit {
     this.description = values[1];
     this.imgUrl = values[2];
     this.route = values[3];
+
+    const icon = document.getElementById('nav-icon');
+    const text = document.getElementById('nav-text');
+    if (this.route === '') {
+      text.innerText = 'Brak przejścia';
+      icon.innerText = 'cancel';
+    } else {
+      text.innerText = 'Przejdź dalej';
+      icon.innerText = 'arrow_forward';
+    }
   }
 
   onClick(): void {
-    this.router.navigate([this.route]).then(
-      () => console.log('navigated to ' + this.route)
-    );
+    if (this.route !== '') {
+      this.router.navigate([this.route]).then(
+        () => console.log('navigated to ' + this.route)
+      );
+    }
     this.closeWindow();
   }
 }
