@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 import database from '../database.json';
-import {DataService} from '../data.service';
-import {DetailsFieldComponent} from '../details-field/details-field.component';
-import {DetailsService} from '../details.service';
+import {DataService} from '../services/data.service';
+import {DetailsFieldComponent} from '../components/details-field/details-field.component';
+import {DetailsService} from '../services/details.service';
 
 @Component({
   selector: 'app-view-frame',

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {DataService} from '../../data.service';
+import {DataService} from '../../services/data.service';
 import {ViewComponent} from '../view.component';
-import {DetailsService} from '../../details.service';
+import {DetailsService} from '../../services/details.service';
 
 @Component({
   selector: 'app-main-view',
