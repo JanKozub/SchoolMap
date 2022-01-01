@@ -12,6 +12,7 @@ export class DetailsFieldComponent implements OnInit {
   title = '[title]';
   description = '[description]';
   private route = '/default-route';
+  imgUrl = '/';
 
   constructor(private detailsService: DetailsService, private router: Router) {
   }
@@ -38,7 +39,8 @@ export class DetailsFieldComponent implements OnInit {
     const values = data.split(';');
     this.title = values[0];
     this.description = values[1];
-    this.route = values[2];
+    this.imgUrl = values[2];
+    this.route = values[3];
   }
 
   onClick(): void {

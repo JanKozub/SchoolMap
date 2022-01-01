@@ -14,7 +14,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   clickStatus: boolean;
   subscription: Subscription;
 
-  public classesList: { title: string, ids: string[], description: string, route: string }[] = database;
+  public classesList: { title: string, ids: string[], description: string, imgUrl: string, route: string }[] = database;
 
   protected constructor(private data: DataService, private detailsService: DetailsService) {
   }
@@ -24,6 +24,13 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
       if (e.id !== 'frame' && e.id !== 'object') {
         const el = document.getElementById(e.id);
         el.onclick = () => this.onClick(e.id);
+        this.classesList.forEach(entry => {
+          entry.ids.forEach(id => {
+            if (id === el.id) {
+              el.style.cursor = 'pointer';
+            }
+          });
+        });
       }
     });
 
@@ -42,7 +49,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
         entry.ids.forEach(e => {
           if (e === id) {
             DetailsFieldComponent.openWindow();
-            this.detailsService.changeDetails(entry.title, entry.description, entry.route);
+            this.detailsService.changeDetails(entry.title, entry.description, entry.imgUrl, entry.route);
           }
         });
       });

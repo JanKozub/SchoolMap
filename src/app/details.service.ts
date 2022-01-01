@@ -10,7 +10,7 @@ export class DetailsService {
   constructor() {
   }
 
-  changeDetails(title: string, description: string, route: string): void {
-    this.messageSource.next(title + ';' + description + ';' + route + ';');
+  changeDetails(title: string, description: string, imgUrl: string, route: string): void {
+    this.messageSource.next(title + ';' + description + ';' + imgUrl + ';' + route + ';');
   }
 }

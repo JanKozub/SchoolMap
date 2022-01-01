@@ -5,6 +5,7 @@
       "212event"
     ],
     "description": "Szkola srednia zsl jest jak nazwa wskazuje srednia",
+    "imgUrl": "/assets/img/main-map.png",
     "route": "/"
   },
   {
@@ -14,6 +15,7 @@
       "174Gt"
     ],
     "description": "parter ma fajne kanapy",
+    "imgUrl": "/assets/img/floor-zero.png",
     "route": "/floor-zero"
   },
   {
@@ -24,6 +26,7 @@
       "212event"
     ],
     "description": "Ktos tu cwiczy?",
+    "imgUrl": "/assets/img/gym.png",
     "route": "/"
   }
 ]
