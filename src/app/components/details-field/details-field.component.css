@@ -1,6 +1,7 @@
 .slide-in {
   animation-name: slide-in;
-  animation-duration: 0.75s;
+  animation-duration: 0.5s;
+  left: 8px;
 }
 
 @keyframes slide-in {
@@ -14,7 +15,8 @@
 
 .slide-out {
   animation-name: slide-out;
-  animation-duration: 0.75s;
+  animation-duration: 0.5s;
+  left: -366px;
 }
 
 @keyframes slide-out {

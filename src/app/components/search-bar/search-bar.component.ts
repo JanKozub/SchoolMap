@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import database from '../../../assets/database.json';
 import {Router} from '@angular/router';
+import {DetailsFieldComponent} from '../details-field/details-field.component';
+import {DetailsService} from '../../services/details.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,7 +21,7 @@ export class SearchBarComponent implements OnInit {
   public classesList: {
     title: string,
     ids: string[],
-    highlight: string,
+    highlight: string[],
     description: string,
     imgUrl: string,
     route: string
@@ -27,7 +29,7 @@ export class SearchBarComponent implements OnInit {
 
   classes = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private detailsService: DetailsService) {
   }
 
   ngOnInit(): void {
@@ -42,24 +44,21 @@ export class SearchBarComponent implements OnInit {
   }
 
   onChange(): void {
-    console.log(this.getField().value);
-    let swt = false;
-    let highlight = '';
-    let route = '';
-    database.forEach(el => {
-      if (el.title === this.getField().value) {
-        swt = true;
-        highlight = el.highlight;
-        route = el.route;
+    let entry = null;
+    for (const newEntry of database) {
+      if (newEntry.title === this.getField().value) {
+        entry = newEntry;
+        break;
       }
-    });
+    }
 
-    if (swt) {
+    if (entry !== null) {
       console.log('found direction');
-      this.router.navigate([route]).then(() => {
-        document.getElementById(highlight).classList.add('highlight');
-        setTimeout(() =>
-          document.getElementById(highlight).classList.remove('highlight'), 3000);
+      this.router.navigate([entry.route]).then(() => {
+        this.detailsService.changeDetails(entry);
+        DetailsFieldComponent.openWindow(entry);
+
+        document.getElementById(entry.highlight).classList.add('set-highlight');
 
         this.filteredOptions = this.controller.valueChanges.pipe(
           startWith(''),

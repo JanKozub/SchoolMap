@@ -9,42 +9,74 @@ import {Router} from '@angular/router';
 })
 export class DetailsFieldComponent implements OnInit {
 
-  title = '[title]';
-  description = '[description]';
-  private route = '/default-route';
-  imgUrl = '/';
+  currentEntry: any;
 
   constructor(private detailsService: DetailsService, private router: Router) {
   }
 
-  static openWindow(): void {
+  static openWindow(entry: any): void {
+    this.setWindowState(entry, 'out', 'in', true, '8px');
+  }
+
+  static closeWindow(entry: any): void {
+    this.setWindowState(entry, 'in', 'out', false, '-366px');
+  }
+
+  static setWindowState(entry: any, s1: string, s2: string, type: boolean, val: string): void {
     const wrapper = document.getElementById('details-wrapper');
-    wrapper.classList.remove('slide-out');
-    wrapper.classList.add('slide-in');
-    wrapper.style.left = '8px';
+    wrapper.classList.remove('slide-' + s1);
+    wrapper.classList.add('slide-' + s2);
+    wrapper.style.left = val;
+
+    this.highlightFields(entry.highlight, type);
+  }
+
+  static highlightFields(fields: string[], type: boolean): void { // if type === false then remove highlight
+    if (fields !== undefined) {
+      fields.forEach((field) => {
+        const element = document.getElementById(field);
+        try {
+          if (type) {
+            element.classList.remove('remove-highlight');
+            element.classList.add('set-highlight');
+          } else {
+            element.classList.remove('set-highlight');
+            element.classList.add('remove-highlight');
+          }
+        } catch (e) {
+        }
+      });
+    }
   }
 
   ngOnInit(): void {
-    this.detailsService.currentMessage.subscribe(data => this.changeDetails(data));
+    this.detailsService.currentMessage.subscribe(data => this.updateDetails(data));
   }
 
-  closeWindow(): void {
-    const wrapper = document.getElementById('details-wrapper');
-    wrapper.classList.remove('slide-in');
-    wrapper.classList.add('slide-out');
-    wrapper.style.left = '-366px';
-  }
-
-  changeDetails(data: string): void {
+  updateDetails(data: any): void {
     const values = data.split(';');
-    this.title = values[0];
-    this.description = values[1];
-    this.imgUrl = values[2];
-    this.route = values[3];
+    // const ids = values[1].split(',');
+    let ids = values[1];
+    if (ids !== undefined) {
+      ids = ids.split(',');
+    }
+    let highlight = values[2];
+    if (highlight !== undefined) {
+      highlight = highlight.split(',');
+    }
+
+    this.currentEntry = {
+      title: values[0],
+      ids,
+      highlight,
+      description: values[3],
+      imgUrl: values[4],
+      route: values[5]
+    };
 
     const icon = document.getElementById('nav-icon');
     const text = document.getElementById('nav-text');
-    if (this.route === this.router.url) {
+    if (this.currentEntry.route === this.router.url) {
       text.innerText = 'Brak przejścia';
       icon.innerText = 'cancel';
     } else {
@@ -54,10 +86,14 @@ export class DetailsFieldComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.route !== this.router.url) {
-      this.router.navigate([this.route]).then(
-        () => console.log('navigated to ' + this.route));
+    if (this.currentEntry.route !== this.router.url) {
+      this.router.navigate([this.currentEntry.route]).then(
+        () => console.log('navigated to ' + this.currentEntry.route));
     }
-    this.closeWindow();
+    DetailsFieldComponent.closeWindow(this.currentEntry);
+  }
+
+  closeWindow(): void {
+    DetailsFieldComponent.closeWindow(this.currentEntry);
   }
 }

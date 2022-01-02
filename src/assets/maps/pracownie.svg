@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-<svg viewBox="0 0 600 550">
+<svg height="550px" viewBox="0 0 600 550" width="1024px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
   <polyline fill="none" points="180.13,136.28 180.13,405.43 405.06,405.43 405.06,136.28 180.33,136.28 " stroke="#BCBCBC"
             stroke-miterlimit="10"
             stroke-width=""/>
@@ -171,7 +164,3 @@
 
   <text fill="#FFFFFF" id="184t" text-anchor="middle" x="517.695" y="46.1305">514i</text>
 </svg>
-
-
-</body>
-</html>

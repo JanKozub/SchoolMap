@@ -4,10 +4,18 @@
     "ids": [
       "212event"
     ],
-    "highlight": "",
+    "highlight": [],
     "description": "Szkola srednia zsl jest jak nazwa wskazuje srednia",
     "imgUrl": "/assets/img/main-map.png",
     "route": "/"
+  },
+  {
+    "title": "Piętro -1",
+    "ids": [],
+    "highlight": [],
+    "description": "Katakumby be like",
+    "imgUrl": "/assets/img/floor-minus-one.png",
+    "route": "/floor-minus-one"
   },
   {
     "title": "Parter",
@@ -15,10 +23,28 @@
       "174G",
       "174Gt"
     ],
-    "highlight": "174G",
+    "highlight": [
+      "174G"
+    ],
     "description": "parter ma fajne kanapy",
     "imgUrl": "/assets/img/floor-zero.png",
     "route": "/floor-zero"
+  },
+  {
+    "title": "Piętro 1",
+    "ids": [],
+    "highlight": [],
+    "description": "sale 100 cos",
+    "imgUrl": "/assets/img/floor-one.png",
+    "route": "/floor-one"
+  },
+  {
+    "title": "Piętro 2",
+    "ids": [],
+    "highlight": [],
+    "description": "sale 200 cos",
+    "imgUrl": "/assets/img/floor-two.png",
+    "route": "/floor-two"
   },
   {
     "title": "Sala Gimnastyczna",
@@ -26,10 +52,49 @@
       "176inactiveG",
       "176inactiveGt"
     ],
-    "highlight": "176inactiveG",
+    "highlight": [
+      "176inactiveG"
+    ],
     "description": "Ktos tu cwiczy?",
     "imgUrl": "/assets/img/gym.png",
     "route": "/"
+  },
+  {
+    "title": "Internat",
+    "ids": [
+      "175G",
+      "175Gt",
+      "178inactiveG",
+      "178inactiveGt"
+    ],
+    "highlight": [
+      "175G",
+      "178inactiveG"
+    ],
+    "description": "tu sie mieszka?",
+    "imgUrl": "/assets/img/dormitory.png",
+    "route": "/dormitory"
+  },
+  {
+    "title": "Pracownie",
+    "ids": [
+      "177G",
+      "177Gt"
+    ],
+    "highlight": [
+      "177G"
+    ],
+    "description": "praca praca",
+    "imgUrl": "/assets/img/workshop-floor-zero.png",
+    "route": "/dormitory"
+  },
+  {
+    "title": "Pracownie piętro 1",
+    "ids": [],
+    "highlight": [],
+    "description": "wiecej pracy",
+    "imgUrl": "/assets/img/workshop-floor-one.png",
+    "route": "/dormitory"
   },
   {
     "title": "Sala 01",
@@ -37,7 +102,9 @@
       "151",
       "151t"
     ],
-    "highlight": "151",
+    "highlight": [
+      "151"
+    ],
     "description": "Jakis opis sali 1",
     "imgUrl": "/assets/img/class01.png",
     "route": "/floor-zero"
@@ -48,7 +115,9 @@
       "36",
       "36t"
     ],
-    "highlight": "36",
+    "highlight": [
+      "36"
+    ],
     "description": "Jakis opis sali 2",
     "imgUrl": "/assets/img/class02.png",
     "route": "/floor-zero"
@@ -59,7 +128,9 @@
       "35",
       "35t"
     ],
-    "highlight": "35",
+    "highlight": [
+      "35"
+    ],
     "description": "Jakis opis sali 3",
     "imgUrl": "/assets/img/class03.png",
     "route": "/floor-zero"

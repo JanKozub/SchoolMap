@@ -17,11 +17,13 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   public classesList: {
     title: string,
     ids: string[],
-    highlight: string,
+    highlight: string[],
     description: string,
     imgUrl: string,
     route: string
   }[] = database;
+
+  private lastHighlight: string[];
 
   protected constructor(private data: DataService, private detailsService: DetailsService) {
   }
@@ -55,8 +57,11 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
       this.classesList.forEach(entry => {
         entry.ids.forEach(e => {
           if (e === id) {
-            this.detailsService.changeDetails(entry.title, entry.description, entry.imgUrl, entry.route);
-            DetailsFieldComponent.openWindow();
+            DetailsFieldComponent.highlightFields(this.lastHighlight, false);
+
+            this.detailsService.changeDetails(entry);
+            DetailsFieldComponent.openWindow(entry);
+            this.lastHighlight = entry.highlight;
           }
         });
       });

@@ -7,19 +7,32 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.highlight {
-  animation-name: highlight;
-  animation-duration: 3s;
+.set-highlight {
+  animation-name: set-highlight;
+  animation-duration: 1s;
+  fill: #39a00c;
 }
 
-@keyframes highlight {
-  0% {
+@keyframes set-highlight {
+  from {
     fill: #BCBCBC;
   }
-  50% {
+  to {
     fill: #39a00c;
   }
-  100% {
+}
+
+.remove-highlight {
+  animation-name: remove-highlight;
+  animation-duration: 1s;
+  fill: #BCBCBC;
+}
+
+@keyframes remove-highlight {
+  from {
+    fill: #39a00c;
+  }
+  to {
     fill: #BCBCBC;
   }
 }
