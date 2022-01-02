@@ -9,11 +9,10 @@
 
 .object {
   width: 100vh;
-  height: 100vh;
+  height: calc(100vh - 6px);
   border: 3px solid red;
   position: relative;
   left: calc((100vw - 100vh) / 2);
-  top: 20px;
 
   user-select: none;
   -moz-user-select: none;

@@ -55,8 +55,8 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
       this.classesList.forEach(entry => {
         entry.ids.forEach(e => {
           if (e === id) {
-            DetailsFieldComponent.openWindow();
             this.detailsService.changeDetails(entry.title, entry.description, entry.imgUrl, entry.route);
+            DetailsFieldComponent.openWindow();
           }
         });
       });
