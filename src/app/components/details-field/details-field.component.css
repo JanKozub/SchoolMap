@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 
-#main-img {
+#img-wrapper {
   width: 358px;
   height: 358px;
   position: relative;
@@ -66,6 +66,7 @@
   background-color: #989898;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  overflow: hidden;
 }
 
 #title-wrapper {

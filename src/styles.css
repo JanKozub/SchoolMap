@@ -6,3 +6,20 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.highlight {
+  animation-name: highlight;
+  animation-duration: 3s;
+}
+
+@keyframes highlight {
+  0% {
+    fill: #BCBCBC;
+  }
+  50% {
+    fill: #39a00c;
+  }
+  100% {
+    fill: #BCBCBC;
+  }
+}

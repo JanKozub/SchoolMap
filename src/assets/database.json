@@ -4,6 +4,7 @@
     "ids": [
       "212event"
     ],
+    "highlight": "",
     "description": "Szkola srednia zsl jest jak nazwa wskazuje srednia",
     "imgUrl": "/assets/img/main-map.png",
     "route": "/"
@@ -11,9 +12,10 @@
   {
     "title": "Parter",
     "ids": [
-      "test123",
+      "174G",
       "174Gt"
     ],
+    "highlight": "174G",
     "description": "parter ma fajne kanapy",
     "imgUrl": "/assets/img/floor-zero.png",
     "route": "/floor-zero"
@@ -24,8 +26,42 @@
       "176inactiveG",
       "176inactiveGt"
     ],
+    "highlight": "176inactiveG",
     "description": "Ktos tu cwiczy?",
     "imgUrl": "/assets/img/gym.png",
-    "route": ""
+    "route": "/"
+  },
+  {
+    "title": "Sala 01",
+    "ids": [
+      "151",
+      "151t"
+    ],
+    "highlight": "151",
+    "description": "Jakis opis sali 1",
+    "imgUrl": "/assets/img/class01.png",
+    "route": "/floor-zero"
+  },
+  {
+    "title": "Sala 02",
+    "ids": [
+      "36",
+      "36t"
+    ],
+    "highlight": "36",
+    "description": "Jakis opis sali 2",
+    "imgUrl": "/assets/img/class02.png",
+    "route": "/floor-zero"
+  },
+  {
+    "title": "Sala 03",
+    "ids": [
+      "35",
+      "35t"
+    ],
+    "highlight": "35",
+    "description": "Jakis opis sali 3",
+    "imgUrl": "/assets/img/class03.png",
+    "route": "/floor-zero"
   }
 ]

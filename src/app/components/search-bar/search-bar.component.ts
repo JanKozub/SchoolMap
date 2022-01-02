@@ -16,7 +16,15 @@ export class SearchBarComponent implements OnInit {
   controller = new FormControl();
   filteredOptions: Observable<string[]>;
 
-  public classesList: { title: string, ids: string[], route: string }[] = database;
+  public classesList: {
+    title: string,
+    ids: string[],
+    highlight: string,
+    description: string,
+    imgUrl: string,
+    route: string
+  }[] = database;
+
   classes = [];
 
   constructor(private router: Router) {
@@ -36,19 +44,31 @@ export class SearchBarComponent implements OnInit {
   onChange(): void {
     console.log(this.getField().value);
     let swt = false;
+    let highlight = '';
     let route = '';
     database.forEach(el => {
       if (el.title === this.getField().value) {
         swt = true;
+        highlight = el.highlight;
         route = el.route;
       }
     });
 
     if (swt) {
-      console.log('miejsce istnieje');
-      this.router.navigate([route]).then(() => console.log('found dir'));
+      console.log('found direction');
+      this.router.navigate([route]).then(() => {
+        document.getElementById(highlight).classList.add('highlight');
+        setTimeout(() =>
+          document.getElementById(highlight).classList.remove('highlight'), 3000);
+
+        this.filteredOptions = this.controller.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value)),
+        );
+        this.textField.nativeElement.blur();
+      });
     } else {
-      console.log('miejsce nie istnieje');
+      console.log('direction not found');
     }
     this.getField().value = '';
   }

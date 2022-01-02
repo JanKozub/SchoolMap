@@ -14,7 +14,14 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   clickStatus: boolean;
   subscription: Subscription;
 
-  public classesList: { title: string, ids: string[], description: string, imgUrl: string, route: string }[] = database;
+  public classesList: {
+    title: string,
+    ids: string[],
+    highlight: string,
+    description: string,
+    imgUrl: string,
+    route: string
+  }[] = database;
 
   protected constructor(private data: DataService, private detailsService: DetailsService) {
   }

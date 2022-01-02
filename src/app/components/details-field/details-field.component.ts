@@ -44,7 +44,7 @@ export class DetailsFieldComponent implements OnInit {
 
     const icon = document.getElementById('nav-icon');
     const text = document.getElementById('nav-text');
-    if (this.route === '') {
+    if (this.route === this.router.url) {
       text.innerText = 'Brak przejścia';
       icon.innerText = 'cancel';
     } else {
@@ -54,7 +54,7 @@ export class DetailsFieldComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.route !== '') {
+    if (this.route !== this.router.url) {
       this.router.navigate([this.route]).then(
         () => console.log('navigated to ' + this.route)
       );
