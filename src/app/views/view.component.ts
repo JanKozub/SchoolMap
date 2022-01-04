@@ -43,7 +43,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
       }
     });
 
-    this.subscription = this.data.currentMessage.subscribe(message => {
+    this.subscription = this.data.clickStatus.subscribe(message => {
       this.clickStatus = message.toString() === 'true';
     });
   }

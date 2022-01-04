@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.data.currentMessage.subscribe(message => this.message = message);
+    this.subscription = this.data.clickStatus.subscribe(message => this.message = message);
   }
 
   ngAfterViewInit(): void {
@@ -134,7 +134,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sendClickStatus(): void {
-    this.data.changeMessage(this.clickSwitch);
+    this.data.changeClickStatus(this.clickSwitch);
   }
 
   getObjSize(): any {

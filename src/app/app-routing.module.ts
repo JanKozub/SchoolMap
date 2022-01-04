@@ -9,10 +9,10 @@ import {DormitoryViewComponent} from './views/dormitory-view/dormitory-view.comp
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
-  {path: 'floor-minus-one', component: FloorMinusOneComponent},
-  {path: 'floor-zero', component: FloorZeroComponent},
-  {path: 'floor-one', component: FloorOneComponent},
-  {path: 'floor-two', component: FloorTwoComponent},
+  {path: 'floor/0', component: FloorMinusOneComponent},
+  {path: 'floor/1', component: FloorZeroComponent},
+  {path: 'floor/2', component: FloorOneComponent},
+  {path: 'floor/3', component: FloorTwoComponent},
   {path: 'dormitory', component: DormitoryViewComponent},
 ];
 

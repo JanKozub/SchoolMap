@@ -4,13 +4,20 @@ import {BehaviorSubject} from 'rxjs';
 @Injectable()
 export class DataService {
 
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
+  private clickSource = new BehaviorSubject('default message');
+  clickStatus = this.clickSource.asObservable();
+
+  private floorSource = new BehaviorSubject('default message');
+  currentFloor = this.floorSource.asObservable();
 
   constructor() {
   }
 
-  changeMessage(message: boolean): void {
-    this.messageSource.next(String(message));
+  changeClickStatus(status: boolean): void {
+    this.clickSource.next(String(status));
+  }
+
+  changeFloor(floor: number): void {
+    this.floorSource.next(String(floor));
   }
 }

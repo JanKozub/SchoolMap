@@ -20,6 +20,7 @@ import {WorkshopFloorOneComponent} from './views/workshop-floor-one/workshop-flo
 import {FloorOneComponent} from './views/floor-one/floor-one.component';
 import {FloorTwoComponent} from './views/floor-two/floor-two.component';
 import {FloorMinusOneComponent} from './views/floor-minus-one/floor-minus-one.component';
+import {LevelManagerComponent} from './components/level-manager/level-manager.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FloorMinusOneComponent} from './views/floor-minus-one/floor-minus-one.co
     WorkshopFloorOneComponent,
     FloorOneComponent,
     FloorTwoComponent,
-    FloorMinusOneComponent
+    FloorMinusOneComponent,
+    LevelManagerComponent
   ],
   imports: [
     BrowserModule,

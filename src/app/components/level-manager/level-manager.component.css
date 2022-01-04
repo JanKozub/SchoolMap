@@ -1,0 +1,38 @@
+#manager-wrapper {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 300px;
+  right: 150px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#icon-wrapper {
+  width: 100px;
+  height: 96px;
+  position: relative;
+  top: -24px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  transition: all 100ms ease;
+}
+
+#icon-wrapper:hover {
+  opacity: 90%;
+  background-color: #f3f3f3;
+
+}
+
+#map-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+  position: relative;
+  left: 10px;
+  top: 8px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
