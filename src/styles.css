@@ -38,10 +38,9 @@ body {
 }
 
 .level-button {
-  width: 100px;
+  width: 99px;
   height: 100px;
   position: relative;
-  top: -96px;
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
   user-select: none;

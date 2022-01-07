@@ -15,7 +15,7 @@
     "highlight": [],
     "description": "Katakumby be like",
     "imgUrl": "/assets/img/floor-minus-one.png",
-    "route": "/floor-minus-one"
+    "route": "/floor/0"
   },
   {
     "title": "Parter",
@@ -28,7 +28,7 @@
     ],
     "description": "parter ma fajne kanapy",
     "imgUrl": "/assets/img/floor-zero.png",
-    "route": "/floor-zero"
+    "route": "/floor/1"
   },
   {
     "title": "Piętro 1",
@@ -36,7 +36,7 @@
     "highlight": [],
     "description": "sale 100 cos",
     "imgUrl": "/assets/img/floor-one.png",
-    "route": "/floor-one"
+    "route": "/floor/2"
   },
   {
     "title": "Piętro 2",
@@ -44,7 +44,7 @@
     "highlight": [],
     "description": "sale 200 cos",
     "imgUrl": "/assets/img/floor-two.png",
-    "route": "/floor-two"
+    "route": "/floor/3"
   },
   {
     "title": "Sala Gimnastyczna",
@@ -79,14 +79,15 @@
     "title": "Pracownie",
     "ids": [
       "177G",
-      "177Gt"
+      "177Gt",
+      "178Gt"
     ],
     "highlight": [
       "177G"
     ],
     "description": "praca praca",
     "imgUrl": "/assets/img/workshop-floor-zero.png",
-    "route": "/dormitory"
+    "route": "/workshop/1"
   },
   {
     "title": "Pracownie piętro 1",
@@ -94,7 +95,7 @@
     "highlight": [],
     "description": "wiecej pracy",
     "imgUrl": "/assets/img/workshop-floor-one.png",
-    "route": "/dormitory"
+    "route": "/workshop/2"
   },
   {
     "title": "Sala 01",
