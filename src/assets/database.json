@@ -108,7 +108,7 @@
     ],
     "description": "Jakis opis sali 1",
     "imgUrl": "/assets/img/class01.png",
-    "route": "/floor-zero"
+    "route": "/floor/1"
   },
   {
     "title": "Sala 02",
@@ -121,7 +121,7 @@
     ],
     "description": "Jakis opis sali 2",
     "imgUrl": "/assets/img/class02.png",
-    "route": "/floor-zero"
+    "route": "/floor/1"
   },
   {
     "title": "Sala 03",
@@ -134,6 +134,6 @@
     ],
     "description": "Jakis opis sali 3",
     "imgUrl": "/assets/img/class03.png",
-    "route": "/floor-zero"
+    "route": "/floor/1"
   }
 ]
