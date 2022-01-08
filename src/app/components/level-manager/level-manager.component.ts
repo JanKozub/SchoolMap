@@ -45,10 +45,15 @@ export class LevelManagerComponent implements OnInit {
     this.wrapper.innerHTML = '';
     const iconWrapper = document.getElementById('icon-wrapper');
     if (this.levelsNum === 0) {
+      iconWrapper.style.transition = 'all 0ms ease';
       iconWrapper.style.borderTopLeftRadius = '25px';
       iconWrapper.style.borderTopRightRadius = '25px';
+      setTimeout(() => {
+        iconWrapper.style.transition = 'all 100ms ease';
+      }, 100);
       this.wrapper.style.height = '100px';
     } else {
+      iconWrapper.style.transition = 'all 100ms ease';
       iconWrapper.style.borderTopLeftRadius = '0px';
       iconWrapper.style.borderTopRightRadius = '0px';
       this.wrapper.style.height = ((101 * this.levelsNum) + 100) + 'px';

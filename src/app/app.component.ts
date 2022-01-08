@@ -102,35 +102,36 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onMouseWheel(e: any): void {
+    if (this.mouseDownStatus === false) {
+      const pgX = e.pageX;
+      const pgY = e.pageY;
 
-    const pgX = e.pageX;
-    const pgY = e.pageY;
+      const parentRect = this.frameElement.nativeElement.getBoundingClientRect();
+      const rect = this.obj.nativeElement.getBoundingClientRect();
 
-    const parentRect = this.frameElement.nativeElement.getBoundingClientRect();
-    const rect = this.obj.nativeElement.getBoundingClientRect();
+      const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+      this.oldScale = this.scale;
+      this.scale += (delta / 5);
 
-    const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    this.oldScale = this.scale;
-    this.scale += (delta / 5);
+      if (this.scale < 1) {
+        this.scale = 1;
+      } else if (this.scale > 5) {
+        this.scale = 5;
+      } else {
+        const xPercent = parseFloat(((pgX - rect.left) / rect.width).toFixed(2));
+        const yPercent = parseFloat(((pgY - rect.top) / rect.height).toFixed(2));
+        const left = Math.round(pgX - parentRect.left - (xPercent * (rect.width * this.scale / this.oldScale)));
+        const top = Math.round(pgY - parentRect.top - (yPercent * (rect.height * this.scale / this.oldScale)));
 
-    if (this.scale < 1) {
-      this.scale = 1;
-    } else if (this.scale > 5) {
-      this.scale = 5;
-    } else {
-      const xPercent = parseFloat(((pgX - rect.left) / rect.width).toFixed(2));
-      const yPercent = parseFloat(((pgY - rect.top) / rect.height).toFixed(2));
-      const left = Math.round(pgX - parentRect.left - (xPercent * (rect.width * this.scale / this.oldScale)));
-      const top = Math.round(pgY - parentRect.top - (yPercent * (rect.height * this.scale / this.oldScale)));
+        this.obj.nativeElement.style.width = this.startSize.w * this.scale + 'px';
+        this.obj.nativeElement.style.height = this.startSize.h * this.scale + 'px';
 
-      this.obj.nativeElement.style.width = this.startSize.w * this.scale + 'px';
-      this.obj.nativeElement.style.height = this.startSize.h * this.scale + 'px';
+        this.setObjLeft(left);
+        this.setObjTop(top);
+      }
 
-      this.setObjLeft(left);
-      this.setObjTop(top);
+      e.preventDefault();
     }
-
-    e.preventDefault();
   }
 
   sendClickStatus(): void {

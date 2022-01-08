@@ -23,7 +23,6 @@
   left: 1px;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
-  transition: all 100ms ease;
   cursor: pointer;
 }
 

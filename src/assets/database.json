@@ -5,7 +5,7 @@
       "212event"
     ],
     "highlight": [],
-    "description": "Szkola srednia zsl jest jak nazwa wskazuje srednia",
+    "description": "Szkola srednia",
     "imgUrl": "/assets/img/main-map.png",
     "route": "/"
   },
@@ -18,7 +18,7 @@
     "route": "/floor/0"
   },
   {
-    "title": "Parter",
+    "title": "Budynek główny",
     "ids": [
       "174G",
       "174Gt"
@@ -26,7 +26,7 @@
     "highlight": [
       "174G"
     ],
-    "description": "parter ma fajne kanapy",
+    "description": "Znajdziesz tu recepcję, gabinet dyrektora oraz wiele więcej",
     "imgUrl": "/assets/img/floor-zero.png",
     "route": "/floor/1"
   },
