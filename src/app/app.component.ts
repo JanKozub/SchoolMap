@@ -41,11 +41,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.data.clickStatus.subscribe(message => this.message = message);
+    this.subscription = this.data.clickStatus.subscribe(message => this.message = message); // init sprawdzania kliknięcia na obiekt w svg
   }
 
   ngAfterViewInit(): void {
-    this.maxX = parseInt(getComputedStyle(this.frameElement.nativeElement).width, 10);
+    this.maxX = parseInt(getComputedStyle(this.frameElement.nativeElement).width, 10); // wielkość elementu, który renderuje mapę
     this.maxY = parseInt(getComputedStyle(this.frameElement.nativeElement).height, 10);
   }
 
@@ -54,24 +54,24 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onMouseMove(ev: any): void {
-    const currentX = ev.clientX;
+    const currentX = ev.clientX; // Pobranie pozycji myszy
     const currentY = ev.clientY;
 
-    if (this.mouseDownStatus === true) { // If mouse left is down
+    if (this.mouseDownStatus === true) { // Jeżeli lewy przycisk jest wciśnięty
       this.counter++;
 
-      if (this.counter === 1) { // Get Mouse position at the start
+      if (this.counter === 1) { // pozycji myszy na kliknięciu
         this.startX = currentX;
         this.startY = currentY;
-        this.offsetX = this.getObjLeft();
+        this.offsetX = this.getObjLeft(); // jeżeli mapa jest przesunięta, w którymś kierunku to offset jest bardzo ważyny
         this.offsetY = this.getObjTop();
       }
 
-      if (this.startX !== currentX && this.startY !== currentY) { // If mouse is moving then calculate new img position
+      if (this.startX !== currentX && this.startY !== currentY) { // Jeżeli pozycja myszy jest inna od tej startowej to rusz obrazek
         const newLeft = this.offsetX + currentX - this.startX;
-        const newTop = this.offsetY + currentY - this.startY;
+        const newTop = this.offsetY + currentY - this.startY; // obliczanie nowej pozycji
 
-        // if object is in frame then =>
+        // jeżeli obrazek nie został wysunięty poza ramkę =>
         if (newTop > this.getObjSize().h / -2 && newTop + this.getObjSize().h < this.maxY + this.getObjSize().h / 2) {
           this.setObjTop(newTop);
         } else {
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this.clickSwitch = false;
       }
 
-      this.sendClickStatus(); // Inform listeners about mouse left status
+      this.sendClickStatus(); // update statusu lewego przycisku myszy
     } else {
       this.clickSwitch = false;
       this.counter = 0;
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mouseDownStatus = false;
   }
 
-  onMouseWheel(e: any): void {
+  onMouseWheel(e: any): void { // obliczanie skali zoomu maoy
     if (this.mouseDownStatus === false) {
       const pgX = e.pageX;
       const pgY = e.pageY;
@@ -134,7 +134,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  sendClickStatus(): void {
+  sendClickStatus(): void { // -----------------------------------funkcje pomocnicze
     this.data.changeClickStatus(this.clickSwitch);
   }
 

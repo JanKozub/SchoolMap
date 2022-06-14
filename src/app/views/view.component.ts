@@ -14,7 +14,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   clickStatus: boolean;
   subscription: Subscription;
 
-  public classesList: {
+  public classesList: { // pobranie danych z bazy danych
     title: string,
     ids: string[],
     highlight: string[],
@@ -29,7 +29,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   }
 
   ngAfterViewInit(): void {
-    document.querySelectorAll('*[id]').forEach(e => {
+    document.querySelectorAll('*[id]').forEach(e => { // sprawdzanie co zostało kliknięte
       if (e.id !== 'frame' && e.id !== 'object') {
         const el = document.getElementById(e.id);
         el.onclick = () => this.onClick(e.id);
@@ -55,7 +55,7 @@ export abstract class ViewComponent<T = any> implements AfterViewInit, OnDestroy
   onClick(id: string): void {
     if (this.clickStatus) {
       this.classesList.forEach(entry => {
-        entry.ids.forEach(e => {
+        entry.ids.forEach(e => { // update wysuwanego okna od lewej
           if (e === id) {
             DetailsFieldComponent.highlightFields(this.lastHighlight, false);
 
