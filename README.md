@@ -12,7 +12,7 @@ Features:
 * Floor navigation \
   ![](src/assets/readme/4.PNG)
 
-Dokumentacja projektu:
+Dokumentacja projektu(project docs):
 
 Katalog src zawiera wszystkie pliki projektu. Wszystko opiera się na angularze i różnych modułach do niego dobranch.
 
